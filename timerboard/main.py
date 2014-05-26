@@ -17,6 +17,7 @@ def create_app():   # We could pass a config object here
     # Register template filters here
     # app.add_template_filter(some_method)
 
+    app.config.from_envvar('TIMERBOARD_CONFIG') # ex. production_config.py
 
     app.secret_key = os.urandom(24)
     assets.init_app(app)
