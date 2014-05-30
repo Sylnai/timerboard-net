@@ -13,12 +13,10 @@ def load_user(userid):
 
 def create_app():   # We could pass a config object here
     app = Flask(__name__)
-    app.debug = os.environ.get('TIMERBOARD_PRODUCTION', True)
     # Register template filters here
     # app.add_template_filter(some_method)
 
-    #app.config.from_object(config)
-    #app.config.from_pyfile(config_filename)
+    app.config.from_envvar('TIMERBOARD_CONFIG') # ex. production_config.py
 
     app.secret_key = os.urandom(24)
     assets.init_app(app)

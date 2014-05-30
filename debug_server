@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 DEFAULT_PORT=8890
 port=${1-$DEFAULT_PORT}
+export TIMERBOARD_CONFIG="development_config.py"
 uwsgi --http :"$port" --wsgi-file wsgi.py --callable app --py-autoreload 1
